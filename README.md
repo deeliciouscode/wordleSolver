@@ -2,10 +2,11 @@
 ### helps solve wordle riddles. 
 ### Disclaimer: Just an afternoon fun project, because I was frustrated with worldle and couldn't find a solution to a specific riddle.
 
-## Install
+## Install (Linux & Mac, sorry Windows)
 Python version used: `Python 3.8.12`
 
 - `python -m venv venv`
+- `source venv/bin/activate`
 - `pip install -r requirements.txt`
 
 ## How to use
