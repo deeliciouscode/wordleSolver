@@ -2,6 +2,12 @@
 ### helps solve wordle riddles. 
 ### Disclaimer: Just an afternoon fun project, because I was frustrated with worldle and couldn't find a solution to a specific riddle.
 
+## Install
+Python version used: `Python 3.8.12`
+
+- `python -m venv venv`
+- `pip install -r requirements.txt`
+
 ## How to use
 If you start from scratch you can just run `python wordle.py` and then go through the questions.
 It will run the default with 5 letters for the word.
