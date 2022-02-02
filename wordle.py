@@ -85,23 +85,25 @@ def filter_possible_words(words, word, mask, blacked=None):
 
     for _word in words:
         if _word == word:
-            print("catched at _word == word:", _word, word)
+            # print("catched at _word == word:", _word, word)
             continue
         elif not specific_letters_correct(_word):
-            print("catched at not specific_letters_correct:", _word)
+            # print("catched at not specific_letters_correct:", _word)
             continue
         elif not necessary_letters_included(_word): 
-            print("catched at not necessary_letters_included:", _word)
+            # print("catched at not necessary_letters_included:", _word)
             continue
         elif has_letters_in_ruled_out_location(_word):
-            print("catched at has_letters_in_ruled_out_location:", _word)
+            # print("catched at has_letters_in_ruled_out_location:", _word)
             continue
         elif contains_blocked(_word):
-            print("catched at contains_blocked:", _word)
+            # print("catched at contains_blocked:", _word)
             continue
         else:
             possible_words.append(_word)
 
+    if len(possible_words) < 10:
+        print("There are only few options left:", possible_words) 
     return possible_words
 
 def play_game(words, n, word=None, mask=None, blacked=None):
