@@ -1,17 +1,17 @@
-import pandas as pd 
-import string
 from PyInquirer import prompt
 from examples import custom_style_2
 import random
 import argparse
-from questions import from_base, yes_no, how_masked
-from data import get_words
+from questions import yes_no, how_masked
+from data import get_words, add_word, delete_word
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-n', '--length', help='lenght of the word.')
-parser.add_argument('--base', help='word from which to start e.g.: river')
-parser.add_argument('--mask', help='mask from which to start e.g.:: GBGOB')
-parser.add_argument('--blacked', help='blacked out characters with which to start e.g.:: pertalde')
+parser.add_argument('-n', '--length', help='Lenght of the word.')
+parser.add_argument('--add', help='Add word to wordlist.')
+parser.add_argument('--delete', help='Delete word from wordlist. Mutually exclusive with --add.')
+parser.add_argument('--base', help='Word from which to start e.g.: river')
+parser.add_argument('--mask', help='Mask from which to start e.g.:: GBGOB')
+parser.add_argument('--blacked', help='Blacked out characters with which to start e.g.:: pertalde')
 args = parser.parse_args()
 
 def try_till_accepted(words):
@@ -26,7 +26,8 @@ def try_till_accepted(words):
             mask = answers.get("mask").upper()
             return (words, word, mask)
         elif accepted == "no":
-            # exclude not accepted word
+            # remove from words file and exclude not accepted word from current scope
+            delete_word(args.delete.lower(), len(word))
             words = words[:i] + words[i+1:]
             return try_till_accepted(words)
     except:
@@ -125,6 +126,22 @@ def main():
         _n = int(_n)
     else:
         _n = 5 
+
+    is_add = args.add is not None 
+    is_delete = args.delete is not None
+
+    if is_add and is_delete:
+        raise ValueError("--add and --delete are mutually exclusive")
+
+    if is_add:
+        add_word(args.add.lower(), _n)
+        print("added to wordlist.")
+        exit(1)
+
+    if is_delete:
+        delete_word(args.delete.lower(), _n)
+        print("deleted from wordlist.")
+        exit(1)
 
     words = get_words(n=_n)
 
