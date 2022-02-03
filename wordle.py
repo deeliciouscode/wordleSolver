@@ -51,6 +51,8 @@ def filter_possible_words(words, word, mask, blacked=None):
         if mask[i] == "B":
             cant_contain.append(word[i])
     
+    # TODO: deal with letters that are contained and green but there is 
+    # no second occurence. Some words should be excluded that are not right now
     cant_contain = list(  set(cant_contain) 
                         - set(list(letters_anywhere_but.values())) 
                         - set(list(letters_specific.values())))
