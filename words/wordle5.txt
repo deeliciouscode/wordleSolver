@@ -2543,7 +2543,6 @@ cutin
 cutis
 cutto
 cutty
-cutup
 cuvee
 cuzes
 cwtch
@@ -4087,8 +4086,6 @@ fryer
 fubar
 fubby
 fubsy
-fucks
-fucus
 fuddy
 fudge
 fudgy
@@ -4701,8 +4698,6 @@ guans
 guard
 guars
 guava
-gucks
-gucky
 gudes
 guess
 guest
@@ -10837,7 +10832,6 @@ suber
 subha
 succi
 sucks
-sucky
 sucre
 sudds
 sudor
@@ -12847,8 +12841,6 @@ yucas
 yucca
 yucch
 yucko
-yucks
-yucky
 yufts
 yugas
 yuked

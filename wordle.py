@@ -27,7 +27,7 @@ def try_till_accepted(words):
             return (words, word, mask)
         elif accepted == "no":
             # remove from words file and exclude not accepted word from current scope
-            delete_word(args.delete.lower(), len(word))
+            delete_word(word, len(word))
             words = words[:i] + words[i+1:]
             return try_till_accepted(words)
     except:
@@ -54,13 +54,20 @@ def filter_possible_words(words, word, mask, blacked=None):
     
     # TODO: deal with letters that are contained and green but there is 
     # no second occurence. Some words should be excluded that are not right now
-    cant_contain = list(  set(cant_contain) 
-                        - set(list(letters_anywhere_but.values())) 
-                        - set(list(letters_specific.values())))
 
     print("cant_contain:", cant_contain)
     print("letters_anywhere_but:", letters_anywhere_but)
     print("letters_specific:", letters_specific)
+
+    cant_contain = list(  set(cant_contain) 
+                        - set(list(letters_anywhere_but.values())) 
+                        - set(list(letters_specific.values())))
+
+    print("############# after #############")
+    print("cant_contain:", cant_contain)
+    print("letters_anywhere_but:", letters_anywhere_but)
+    print("letters_specific:", letters_specific)
+
 
     def contains_blocked(_word):
         for letter in cant_contain:
